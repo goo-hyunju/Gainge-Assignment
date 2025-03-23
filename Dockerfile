@@ -20,4 +20,4 @@ RUN npm run build
 EXPOSE 5000
 
 # 애플리케이션 시작 명령어
-CMD ["npm", "run", "start"]
+CMD ["npm", "run", "start:prod"]

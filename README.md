@@ -209,3 +209,31 @@ mutation {
     updatedAt
   }
 }
+
+## 📄 데이터베이스 스키마
+```sql
+CREATE TABLE public.post (
+  id serial4 NOT NULL,
+  author_id varchar(255) NOT NULL,
+  author_password varchar(255) NOT NULL,
+  title varchar(255) NOT NULL,
+  content text NULL,
+  created_at timestamp DEFAULT CURRENT_TIMESTAMP NULL,
+  updated_at timestamp DEFAULT CURRENT_TIMESTAMP NULL,
+  CONSTRAINT post_pkey PRIMARY KEY (id)
+);
+
+CREATE TABLE public.postcomment (
+  id serial4 NOT NULL,
+  post_id int4 NOT NULL,
+  author_id varchar(255) NOT NULL,
+  author_password varchar(255) NOT NULL,
+  content text NULL,
+  created_at timestamp DEFAULT CURRENT_TIMESTAMP NULL,
+  updated_at timestamp DEFAULT CURRENT_TIMESTAMP NULL,
+  CONSTRAINT postcomment_pkey PRIMARY KEY (id),
+  CONSTRAINT postcomment_post_id_fkey FOREIGN KEY (post_id) REFERENCES public.post(id) ON DELETE CASCADE
+);
+```
+````
+
